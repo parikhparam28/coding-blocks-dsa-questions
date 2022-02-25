@@ -1,0 +1,19 @@
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+int main() {
+	int n,mod=1e9+7,sum=0,res=0;
+	cin>>n;
+	vector<int>v(n);
+	for(auto &x:v) cin>>x,sum+=x;
+	int q;
+	cin>>q;
+	while(q--)
+	{
+		int a;
+		cin>>a;
+		(sum+=sum)%=mod;
+	}
+	cout<<sum<<endl;
+	return 0;
+}
