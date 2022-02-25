@@ -6,15 +6,16 @@ void solve()
 {
 	int n;
 	cin>>n;
-	vector<int>v(n);
+	vector<int>v(2*n);
 	for(int i=0;i<n;i++)
-		cin>>v[i];
-	int sum=0,mx=0;
-	for(int i=0;i<n;i++)
+		cin>>v[i],v[i+n]=v[i];
+	int sum=0,mx=0,j=0;
+	for(int i=0;i<2*n;i++)
 	{
 		sum+=v[i];
-		if(sum<0) sum=0;
 		mx=max(mx,sum);
+		if(i-j+1==n) sum-=v[j++];
+		if(sum<0) sum=0,j=i+1;
 	}
 	cout<<mx<<endl;
 }
