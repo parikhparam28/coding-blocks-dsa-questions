@@ -1,0 +1,39 @@
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+void solve()
+{
+	int n,m;
+	cin>>n>>m;
+	vector<int>v1(n),v2(m);
+	for(int i=0;i<n;i++)
+		cin>>v1[i];
+	for(int i=0;i<m;i++)
+		cin>>v2[i];
+	int sum1=0,sum2=0,i=0,j=0;
+	for(int k=0;k<n+m;k++)
+	{
+		if(i<n && j<m && v1[i]<v2[j])
+			sum1+=v1[i++];
+		else if(i<n && j<m && v1[i]>v2[j])
+			sum2+=v2[j++];
+		else if(i<n && j<m && v1[i]==v2[j])
+			sum1+=v1[i++],sum2+=v2[j++],sum1=max(sum1,sum2),sum2=max(sum1,sum2),k++;
+		else if(i<n)
+			sum1+=v1[i++];
+		else 
+			sum2+=v2[j++];
+	}
+	cout<<max(sum1,sum2)<<endl;
+}
+
+int main() {
+	int t;
+	cin>>t;
+	while(t--)
+	{
+		solve();
+	}
+	return 0;
+}
